@@ -1,6 +1,6 @@
 # Exercise 1
 
-1. Copy the Tiny CLI code from [Node.js Readline documenation](https://nodejs.org/api/readline.html#example-tiny-cli) into a file named `cli.js`. 
+1. Copy the Tiny CLI code from [Node.js Readline documentation](https://nodejs.org/api/readline.html#example-tiny-cli) into a file named `cli.js`. 
 
 2. Update the TypeScript configuration file to enable JavaScript and implicit any. Build the CLI code and run it. Does it work?
 
