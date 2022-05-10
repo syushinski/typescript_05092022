@@ -1,34 +1,48 @@
 import { useCallback, useState } from 'react';
 
-import { NewColor, Color } from '../models/colors';
+import { Color } from '../models/colors';
 import { ToolHeader } from './ToolHeader';
-// import { ColorList } from './ColorList';
+import { ColorList } from './ColorList';
 import { ColorForm } from './ColorForm';
+import { useSortedList, SortDir } from '../hooks/useSortedList';
+
+export const createColorsCompareFn = (sortDir: SortDir) => {
+  return (a: Color, b: Color) => {
+    if (a.name < b.name) {
+      return sortDir === 'asc' ? 1 : -1;
+    } else if (a.name > b.name) {
+      return sortDir === 'desc' ? -1 : 1;
+    } else {
+      return 0;
+    }
+  }
+};
 
 
 export function ColorTool() {
 
-  const [ colors, setColors ] = useState<Color[]>([]);
+  const [ showHexcode, setShowHexcode ] = useState(false);
+  const [
+    colors,,
+    appendColor,,
+    removeColor,
+    sortColorsAsc,
+    sortColorsDesc,
+  ] = useSortedList<Color>(createColorsCompareFn, []);
 
-  const appendColor = useCallback((color: NewColor) => {
-    setColors([
-      ...colors,
-      {
-        ...color,
-        id: Math.max(...colors.map(c => c.id), 0) + 1,
-      },
-    ]);
-  }, [colors]);
+  const toggleHexcode = useCallback(() => {
+    setShowHexcode(!showHexcode);
+  }, [showHexcode])
 
   return (
     <>
       <ToolHeader headerText='Color Tool' />
-      {/* <ColorList colors={colors}
+      <ColorList colors={colors}
                 showHexcode={showHexcode}
                 onSortAsc={sortColorsAsc}
                 onSortDesc={sortColorsDesc}
                 onToggleHexcode={toggleHexcode}
-                onRemoveColor={removeColor} /> */}
+                onRemoveColor={removeColor} />
       <ColorForm buttonText="Add Color"
         onSubmitColor={appendColor} />
     </>
