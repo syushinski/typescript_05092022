@@ -15,9 +15,9 @@ rl.prompt();
 
 rl.on('line', (line: string) => {
 
-  const [rawOpName, rawOpValue ] = line.split(' ');
+  const [rawOpName, rawOpValue ] = line.trim().split(' ');
 
-  const opName = rawOpName.trim() as Operations;
+  const opName = rawOpName as Operations;
   const opValue = parseFloat(rawOpValue);
 
   if (!isOperation(opName)) {
