@@ -15,9 +15,8 @@ rl.prompt();
 
 rl.on('line', (line: string) => {
 
-  const [rawOpName, rawOpValue ] = line.trim().split(' ');
+  const [ opName, rawOpValue ] = line.trim().split(' ');
 
-  const opName = rawOpName as Operations;
   const opValue = parseFloat(rawOpValue);
 
   if (!isOperation(opName)) {
@@ -59,6 +58,8 @@ rl.on('line', (line: string) => {
       break;
     default:
       throw new Error("should never get here");
+      // console.log(`The request operation ${opName} is not valid.`);
+      // break;
   }
 
   rl.prompt();

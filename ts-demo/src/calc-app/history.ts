@@ -1,14 +1,14 @@
-import { Operations } from "./ops";
+import { Operation } from "./ops";
 
 export type HistoryEntry = {
   id: number;
-  opName: Operations,
+  opName: Operation,
   opValue: number,
 };
 
 export const appendHistory = (
   history: HistoryEntry[],
-  opName: Operations,
+  opName: Operation,
   opValue: number,
 ) => {
 

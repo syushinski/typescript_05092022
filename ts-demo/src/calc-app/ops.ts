@@ -1,27 +1,19 @@
-export enum Operations {
-  Add = "add",
-  Subtract = "subtract",
-  Multiply = "multiply",
-  Divide = "divide",
-  Clear = "clear",
-  Exit = "exit",
-  History = "history"
-}
+export const Operations = {
+  Add: "add",
+  Subtract: "subtract",
+  Multiply: "multiply",
+  Divide: "divide",
+  Clear: "clear",
+  Exit: "exit",
+  History: "history"
+} as const;
 
-const operations = [
-  'add',
-  'subtract',
-  'multiply',
-  'divide',
-  'clear',
-  'exit',
-  'history'
-] as const;
+type OperationNames = keyof typeof Operations;
 
-export type Operation = typeof operations[number];
+export type Operation = typeof Operations[OperationNames];
 
 export function isOperation(op: any): op is Operation {
-  return operations.includes(op);
+  return Object.values(Operations).includes(op);
 }
 
 
