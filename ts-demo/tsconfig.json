@@ -98,5 +98,5 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
-  "exclude": ["previous-demos"]
+  "exclude": ["src/demos/archive"]
 }

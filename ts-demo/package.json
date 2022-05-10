@@ -2,12 +2,11 @@
   "name": "ts-demo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
     "clean": "rimraf dist",
-    "calc:run": "nodemon ./dist/calc.js",
+    "calc:run": "nodemon ./dist/calc-app/calc.js",
     "start": "run-p build:watch calc:run"
   },
   "keywords": [],
